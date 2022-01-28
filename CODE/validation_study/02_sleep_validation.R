@@ -736,7 +736,7 @@ full_dat$timestamp <- as.POSIXct( full_dat$timestamp, tz = 'UTC' )
 
 
 ## load in the original focal follow observation data #####
-files <- list.files(path = "/Users/cloftus/Documents/Night_acc/sleep_validation/loopy_focal_follows_2021_09_17/", pattern = "*.csv", full.names = TRUE, recursive = TRUE)
+files <- list.files(path = "DATA/validation_study/loopy_focal_follows_2021_09_17/", pattern = "*.csv", full.names = TRUE, recursive = TRUE)
 
 dfs <- lapply(as.list(files), read.csv)
 
@@ -804,7 +804,6 @@ fuller_focal$stop_timestamp <- as.POSIXct( fuller_focal$stop_timestamp, tz = 'UT
 fuller_focal$duration <- fuller_focal$stop_timestamp - fuller_focal$start_timestamp
 
 full_trim_focal <- fuller_focal[ fuller_focal$Value %in% c( 'Active', 'Alert', 'Unalert' ), ]
-
 
 pub_dat <- full_trim_focal[ full_trim_focal$collar_id %in% c( '2428', '2433', '2434', '2436', '2441', '2447', '2450' ), ] ## these tags were determined by running this whole code without trimming to just these tags, and running the validation below, and seeing which tags had sleep data and behavioral observation data that were collected synchronously
 
